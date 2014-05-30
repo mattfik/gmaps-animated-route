@@ -63,6 +63,7 @@ function(gmaps, _, points, filters, styles, animateRoute){
         zoomControl: false,
         mapTypeControl: false,
         streetViewControl : false,
+        scrollwheel: false,
         zoomControlOptions : {
           position: gmaps.ControlPosition.LEFT_BOTTOM,
           style: gmaps.ZoomControlStyle.LARGE
