@@ -19,17 +19,19 @@
   </head>
   <body>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="map"></div>
-        </div>
-      </div>
-    </div>
+    <div class="map"></div>
+    <div class="row text-center">
+      <button type="button" class="btn btn-default ">Animate</button>
+    <div>
 
     <script>
       require(['./app/route'], function(Route){
         var route = new Route();
+        var btn = document.querySelector('.btn');
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          route.playAnimation();
+        });
       });
     </script>
 
