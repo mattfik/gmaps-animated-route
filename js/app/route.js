@@ -17,7 +17,7 @@ function(gmaps, _, points, filters, styles, animateRoute){
     // default options
     _options: {
       initializeFilters: true,
-      animate: true
+      animate: false
     },
 
     map: {},
@@ -98,7 +98,7 @@ function(gmaps, _, points, filters, styles, animateRoute){
         //animation: google.maps.Animation.DROP
       });
 
-      self.updateRoutes();
+      //self.updateRoutes();
     },
 
     updateRoutes: function() {
@@ -136,13 +136,13 @@ function(gmaps, _, points, filters, styles, animateRoute){
 
     },
 
-    enableFilters: function() {
+    playAnimation: function() {
 
-      if (typeof this.line.setMap === 'function') {
+      if (this.line.setMap) {
         this.line.setMap(null);
       }
 
-      this.enabledFilters = filters;
+      this.options.animate = true;
       this.updateRoutes();
 
     },
