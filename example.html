@@ -21,16 +21,33 @@
 
     <div class="map"></div>
     <div class="row text-center">
-      <button type="button" class="btn btn-default ">Animate Route</button>
+      <button id="js-animate-btn" type="button" class="btn btn-default ">Animate Route</button>
+      <button id="js-draw-btn" type="button" class="btn btn-default ">Draw Route</button>
+      <button id="js-print-btn" type="button" class="btn btn-default ">Print Route</button>
     <div>
 
     <script>
-      require(['./app/route'], function(Route){
+      require(['./app/route', './app/draw'], function(Route, Draw){
         var route = new Route();
-        var btn = document.querySelector('.btn');
-        btn.addEventListener('click', function(e){
+        var draw  = new Draw(route); // NOTE: passing route could cause a race condition if the tiles take a long time to load
+
+        var animateBtn = document.getElementById('js-animate-btn');
+        var drawBtn    = document.getElementById('js-draw-btn');
+        var printBtn   = document.getElementById('js-print-btn');
+
+        animateBtn.addEventListener('click', function(e) {
           e.preventDefault();
           route.playAnimation();
+        });
+
+        drawBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          draw.drawPath();
+        });
+
+        printBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          draw.printPathData();
         });
       });
     </script>

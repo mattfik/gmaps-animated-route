@@ -56,18 +56,17 @@ function(gmaps, _, points, filters, styles, animateRoute){
 
       self.map = new gmaps.Map(document.querySelector(".map"), {
         center: new gmaps.LatLng(51.512361, -0.1404834),
-        zoom: 13,
+        zoom: 14,
         mapTypeId: gmaps.MapTypeId.ROADMAP,
         styles: styles,
-        panControl: false,
+        zoom: 13,
+        draggable: false,
         zoomControl: false,
-        mapTypeControl: false,
-        streetViewControl : false,
+        zoomControlOptions: false,
         scrollwheel: false,
-        zoomControlOptions : {
-          position: gmaps.ControlPosition.LEFT_BOTTOM,
-          style: gmaps.ZoomControlStyle.LARGE
-        }
+        disableDoubleClickZoom: true,
+        disableDefaultUI: true,
+        keyboardShortcuts: false
       });
 
       // Wait map to be fully loaded before set the markers
