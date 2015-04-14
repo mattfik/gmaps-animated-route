@@ -23,8 +23,9 @@ define(['gmaps'], function(gmaps) {
 
       var _this = this;
 
-      _this.timing = 0;
-      _this.timingStep = 1000;
+      numPoints = 0;
+      timing = 0;
+      timingStep = 1000;
 
       // Add click handler to gather latLng points for animation
       gmaps.event.addListener(_this.map, "click", function (e) {
@@ -35,11 +36,11 @@ define(['gmaps'], function(gmaps) {
         _this.collection.push({
           "latitude"  : lat.toString(),
           "longitude" : lng.toString(),
-          "timestamp" : _this.timing.toString()
+          "timestamp" : timing.toString()
         });
 
-        _this.timing = _this.timing + _this.timingStep;
-        _this.numPoints = _this.numPoints + 1;
+        timing = timing + timingStep;
+        numPoints = numPoints + 1;
 
       });
 
