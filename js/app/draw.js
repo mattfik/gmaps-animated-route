@@ -23,12 +23,16 @@ define(['gmaps'], function(gmaps) {
 
       var _this = this;
 
-      numPoints = 0;
-      timing = 0;
-      timingStep = 1000;
+      var timing = 0;
+      var timingStep = 1000;
+      var lastLatLng = {};
 
       // Add click handler to gather latLng points for animation
       gmaps.event.addListener(_this.map, "click", function (e) {
+
+        if(_this.collection.length === 0) {
+          _this.lastLatLng = e.latLng;
+        }
 
         var lat = e.latLng.lat();
         var lng = e.latLng.lng();
@@ -38,9 +42,23 @@ define(['gmaps'], function(gmaps) {
           "longitude" : lng.toString(),
           "timestamp" : timing.toString()
         });
-
         timing = timing + timingStep;
-        numPoints = numPoints + 1;
+
+        console.log(_this.lastLatLng);
+
+        var coords = [_this.lastLatLng, e.latLng];
+
+        var line = new google.maps.Polyline({
+          path: coords,
+          geodesic: false,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        line.setMap(_this.map);
+
+        // Update the last recorded points
+        _this.lastLatLng = e.latLng;
 
       });
 

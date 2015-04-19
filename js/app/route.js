@@ -55,15 +55,14 @@ function(gmaps, _, points, filters, styles, animateRoute){
           forEach = Array.prototype.forEach;
 
       self.map = new gmaps.Map(document.querySelector(".map"), {
-        center: new gmaps.LatLng(51.512361, -0.1404834),
+        center: new gmaps.LatLng(48.443337, -123.351704),
         zoom: 14,
         mapTypeId: gmaps.MapTypeId.ROADMAP,
         styles: styles,
-        zoom: 13,
+        backgroundColor: "#101010",
         draggable: false,
         zoomControl: false,
         zoomControlOptions: false,
-        scrollwheel: false,
         disableDoubleClickZoom: true,
         disableDefaultUI: true,
         keyboardShortcuts: false
@@ -71,10 +70,23 @@ function(gmaps, _, points, filters, styles, animateRoute){
 
       // Wait map to be fully loaded before set the markers
       self.mapTileListener = gmaps.event.addListener(self.map, 'tilesloaded', function(){
-        self.setMarkers();
+        // self.setMarkers();
         gmaps.event.removeListener(self.tileListener);
       });
 
+      // Keep the map centered on resize
+      google.maps.event.addDomListener(window, 'resize', function() {
+        var center;
+        center = self.map.getCenter();
+        google.maps.event.trigger(self.map, 'resize');
+        return self.map.setCenter(center);
+      });
+
+    },
+
+    centerMap: function() {
+      var center = this.map.getCenter();
+      return this.map.setCenter(center);
     },
 
     setMarkers: function() {

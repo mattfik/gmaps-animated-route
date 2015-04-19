@@ -20,10 +20,14 @@
   <body>
 
     <div class="map"></div>
-    <div class="row text-center">
-      <button id="js-animate-btn" type="button" class="btn btn-default ">Animate Route</button>
-      <button id="js-draw-btn" type="button" class="btn btn-default ">Draw Route</button>
-      <button id="js-print-btn" type="button" class="btn btn-default ">Print Route</button>
+
+    <div class="row menu">
+      <div class="btn-wrapper">
+        <button id="js-animate-btn" type="button" class="btn btn-default ">Animate Route</button>
+        <button id="js-draw-btn" type="button" class="btn btn-default ">Draw Route</button>
+        <button id="js-print-btn" type="button" class="btn btn-default ">Print Route</button>
+        <button id="js-center-btn" type="button" class="btn btn-default ">Center Map</button>
+      </div>
     <div>
 
     <script>
@@ -34,6 +38,7 @@
         var animateBtn = document.getElementById('js-animate-btn');
         var drawBtn    = document.getElementById('js-draw-btn');
         var printBtn   = document.getElementById('js-print-btn');
+        var centerBtn   = document.getElementById('js-center-btn');
 
         animateBtn.addEventListener('click', function(e) {
           e.preventDefault();
@@ -48,6 +53,11 @@
         printBtn.addEventListener('click', function(e) {
           e.preventDefault();
           draw.printPathData();
+        });
+
+        centerBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          route.centerMap();
         });
       });
     </script>
