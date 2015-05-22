@@ -56,12 +56,10 @@ function(gmaps, _, points, filters, styles, animateRoute){
 
       self.map = new gmaps.Map(document.querySelector(".map"), {
         center: new gmaps.LatLng(48.443337, -123.351704),
-        zoom: 14,
+        zoom: 13,
         mapTypeId: gmaps.MapTypeId.ROADMAP,
         styles: styles,
         backgroundColor: "#101010",
-        draggable: false,
-        zoomControl: false,
         zoomControlOptions: false,
         disableDoubleClickZoom: true,
         disableDefaultUI: true,

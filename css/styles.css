@@ -33,6 +33,11 @@ body {
 
 .btn-wrapper {
   padding: 16px;
+  text-align: right;
+}
+
+.btn-wrapper button {
+  margin-bottom: 8px;
 }
 
 .menu {
@@ -40,6 +45,20 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255,255,255, 0.3);
-  text-align: right;
+  padding: 0 30px;
+  background-color: rgba(255,255,255, 0.80);
+  color: black;
+}
+
+.text-wrapper {
+  float: left;
+}
+
+.text-wrapper h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+.text-wrapper p {
+  font-size: 18px;
 }
